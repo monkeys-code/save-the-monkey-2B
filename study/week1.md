@@ -25,8 +25,26 @@ return [0, 1].
 
 #### 서경원
 {image}
-{code}
-{retrospective}
+
+##### Code
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const len = nums.length;
+    for (let i = 0 ; i < len ; i++) {
+        for (let j = i + 1 ; j < len ; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
+    return [];
+};
+```
 
 #### 김지훈
 {purpose}
@@ -66,8 +84,38 @@ Follow up
 
 #### 서경원
 {image}
-{code}
-{retrospective}
+
+##### Code
+
+```javascript
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    if (x < 0) {
+        return false;
+    } else if (x < 10) {
+        return true;
+    }
+    
+    const str = x.toString();
+    const len = str.length;
+    const last = len - 1;
+    const half = Math.floor(len / 2);
+    for (let i = 0 ; i < half ; i++) {
+        if (str[i] !== str[last - i]) {
+            return false;
+        }
+    }
+    return true;
+};
+```
+
+##### Retrospective
+- 오랜만에 시작하니 감을 많이 잃은 것 같다.
+- 다시 처음부터 한다는 마음가짐으로 진행해야할 것 같다.
+- 한 문제를 풀 때 다양한 시각으로 보는 연습이 필요하다.
 
 #### 김지훈
 {purpose}
