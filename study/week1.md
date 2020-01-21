@@ -20,8 +20,15 @@ return [0, 1].
 
 #### 고은정
 {image}
-{code}
-{retrospective}
+```python
+ def twoSum(self, nums: List[int], target: int) -> List[int]:
+    for i in range(len(nums)):
+        for j in range(len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i,j]
+```
+- 다시 풀어보니 이전 풀이가 틀렸다는 걸 깨달았다. 단순히 값으로 루프를 돌았던 것 같은데 인덱스를 리턴해야 한다.
+- 파이썬이 알고리즘 풀기엔 가장 편하지만 사용 언어로 트집 잡힐 염려 때문에 그냥 무난한 js로 바꿀까 싶기도 하다.
 
 #### 서경원
 {image}
@@ -79,8 +86,55 @@ Follow up
 
 #### 고은정
 {image}
-{code}
-{retrospective}
+```python
+def isPalindrome(self, x: int) -> bool:
+    x = str(x)
+    size = len(x)
+    half = len(x)//2
+
+    if size%2 == 0:
+        last = x[half:size]
+    else:
+        last = x[half+1:size]
+
+    if x[0:half] == last[::-1]:
+        return True
+    return False
+```
+```javascript
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    if(x < 0){ // -121
+        return false;
+    }
+
+    if(x < 10){ // '0..9'
+        return true;
+    }
+
+    var p = x.toString()
+    var len = p.length;
+
+    // '121' [012] 3/2=1.5
+    // '1221' [0123] 4/2=2
+    for(let i=0; i<len/2; i++){
+        if(p[i] !== p[len-i-1]){
+            return false
+            //p[0] == p[3-0-1 = 2]
+            //p[1] == p[3-1-1 = 1]
+        }
+    }
+    return true;
+};
+```
+- python은 예전에 리트코드에 서브밋 했던 코드...
+- 인덱스 조건을 잘 쓰면 한줄로도 할 수 있는데, 잡기술이나 숏코딩은 어차피 까먹음
+- js로 다시 풀어보았다
+- 서브밋 하기 전에 손 디버깅 해보는게 중요한 것 같다. 간단한 문제긴 하지만 오타 없이 한번에 통과해서 기분좋음
+- 구글은 구글독스에 에디터 지원 없이 풀어야 하기 때문에 테스트 케이스를 미리 체크하는 연습을 하자
 
 #### 서경원
 {image}
@@ -98,7 +152,7 @@ var isPalindrome = function(x) {
     } else if (x < 10) {
         return true;
     }
-    
+
     const str = x.toString();
     const len = str.length;
     const last = len - 1;
