@@ -88,7 +88,23 @@ var lemonadeChange = function(bills) {
 {code}
 
 #### 서경원
-{code}
+```javascript
+/**
+ * @param {character[]} letters
+ * @param {character} target
+ * @return {character}
+ */
+var nextGreatestLetter = function(letters, target) {
+    for (let letter of letters) {
+        if (letter > target) {
+            return letter;
+        }
+    }
+    return letters[0];
+};
+```
+
+
 
 #### 김지훈
 {code}
@@ -111,7 +127,24 @@ var lemonadeChange = function(bills) {
 
 #### 서경원
 
-{code}
+```javascript
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfThree = function(n) {
+    if (n <= 0) {
+        return false;
+    }
+    while (n > 1) {
+        if (n % 3 !== 0) {
+            return false;
+        }
+        n /= 3;
+    }
+    return true;
+};
+```
 
 #### 김지훈
 
