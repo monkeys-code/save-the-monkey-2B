@@ -34,7 +34,40 @@ class Solution:
 - 문제를 잘 읽어야 함...
 
 #### 서경원
-{code}
+```javascript
+/**
+ * @param {number[]} bills
+ * @return {boolean}
+ */
+var lemonadeChange = function(bills) {
+    let bill5 = 0;
+    let bill10 = 0;
+    
+    for (let bill of bills) {
+        if (bill === 5) {
+            bill5++;
+        } else if (bill === 10) {
+            if (bill5 > 0) {
+                bill5--;
+                bill10++;
+            } else {
+                return false;
+            }
+        } else {
+            if (bill10 > 0 && bill5 > 0) {
+                bill10--;
+                bill5--;
+            } else if (bill5 > 2) {
+                bill5 -= 3;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    return true;
+};
+```
 
 #### 김지훈
 
