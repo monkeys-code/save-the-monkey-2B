@@ -18,7 +18,7 @@ class Solution:
             if b == 10:
                 if income[0] >= 5:
                     income[0] -= 5
-                    income[1] += 10 
+                    income[1] += 10
                 else:
                     return False
             if b == 20:
@@ -52,7 +52,15 @@ class Solution:
 
 #### 고은정
 
-{code}
+```python
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+		for i,v in enumerate(letters): # O(n)
+            if target < v:
+                return v
+
+        return letters[0]
+```
 
 #### 서경원
 {code}
