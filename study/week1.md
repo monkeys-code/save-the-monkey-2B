@@ -1,5 +1,5 @@
 # 1회차 스터디
-2020. 01. 18
+`2020. 01. 18`
 진행자 김지훈
 
 ## Round 1
@@ -19,7 +19,8 @@ return [0, 1].
 ```
 
 #### 고은정
-{image}
+![solve](../images/w01_p1_ej.jpg)
+
 ```python
  def twoSum(self, nums: List[int], target: int) -> List[int]:
     for i in range(len(nums)):
@@ -31,7 +32,7 @@ return [0, 1].
 - 파이썬이 알고리즘 풀기엔 가장 편하지만 사용 언어로 트집 잡힐 염려 때문에 그냥 무난한 js로 바꿀까 싶기도 하다.
 
 #### 서경원
-{image}
+![solve](../images/w01_p1_kw.jpg)
 
 ##### Code
 ```javascript
@@ -53,9 +54,6 @@ var twoSum = function(nums, target) {
 };
 ```
 
-#### 김지훈
-{purpose}
-{solution}
 
 ## Round 2
 ### Problem - [Palindrom Number](https://leetcode.com/problems/palindrome-number/)
@@ -85,7 +83,7 @@ Follow up
 ```
 
 #### 고은정
-{image}
+![solve](../images/w01_p2_kw.jpg)
 ```python
 def isPalindrome(self, x: int) -> bool:
     x = str(x)
@@ -137,7 +135,7 @@ var isPalindrome = function(x) {
 - 구글은 구글독스에 에디터 지원 없이 풀어야 하기 때문에 테스트 케이스를 미리 체크하는 연습을 하자
 
 #### 서경원
-{image}
+![solve](../images/w01_p2_kw.jpg)
 
 ##### Code
 
@@ -172,8 +170,7 @@ var isPalindrome = function(x) {
 - 한 문제를 풀 때 다양한 시각으로 보는 연습이 필요하다.
 
 #### 김지훈
-{purpose}
-{solution}
+* 역시 자주해야... 간만에 하니까 머리가 안 돌아감
 
 ## Retrospective
 * 오랫만에 하려니까 정말 쉽지 않다.
