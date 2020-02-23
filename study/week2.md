@@ -75,7 +75,61 @@ var lemonadeChange = function(bills) {
 
 #### 이소은
 
-{code}
+```javascript
+var lemonadeChange = function(bills) {
+    const new_map = {};
+    let status = false;
+    
+    for(let i = 0; i < bills.length; i++) {
+        if (bills[i] === 5) {
+            if (new_map.hasOwnProperty(5)) {
+                new_map[5] += 1
+            } else {
+                new_map[5] = 1
+            }
+            status = true
+        } else if(bills[i] === 10) {
+            if (new_map.hasOwnProperty(10)) {
+                new_map[10] += 1
+            } else {
+                new_map[10] = 1
+            }
+
+            if (new_map.hasOwnProperty(5) && new_map[5] > 0 ) {
+                new_map[5] -= 1
+                status = true
+            } else {
+                status = false
+                break;
+            }
+
+        } else if(bills[i] === 20) {
+            if (new_map.hasOwnProperty(10) && new_map[10] > 0) {
+                new_map[10] -= 1
+                if (new_map.hasOwnProperty(5) && new_map[5] > 0) {
+                    new_map[5] -= 1
+                    status = true
+                } else {
+                    status = false
+                    break;
+                }  
+            } else {
+                if (new_map.hasOwnProperty(5) && new_map[5] > 2) {
+                    new_map[5] -= 3
+                    status = true
+                } else {
+                    status = false
+                    break;
+                }  
+            }
+
+            
+        }
+    }
+    
+    return status
+};
+```
 
 
 
@@ -119,7 +173,34 @@ var nextGreatestLetter = function(letters, target) {
 
 #### 이소은
 
-{code}
+```javascript
+var nextGreatestLetter = function(letters, target) {
+    const new_map = {}
+    for(let i =0; i < letters.length; i++) {
+        new_map[letters[i]] = letters[i].charCodeAt(0) - target.charCodeAt(0))
+    }
+    
+    let min_value;
+    let find_value = ""
+    Object.keys(new_map).forEach((d) => {
+        if (!min_value && new_map[d] > 0) {
+            min_value = new_map[d]
+            find_value = d
+        } else {
+            if (new_map[d] > 0 && min_value >  new_map[d]) {
+                find_value = d
+            }
+        }
+        
+    })
+    
+    if (find_value === "") {
+        return letters[0]
+    }
+    
+    return find_value
+};
+```
 
 
 
@@ -160,7 +241,30 @@ var isPowerOfThree = function(n) {
 
 #### 이소은
 
-{code}
+```javascript
+var isPowerOfThree = function(n) {
+    if (n <  1) {
+        return false
+    } else if (n === 1) {
+        return true
+    }
+    
+    return _isPowerOfThree(n);
+    
+};
+
+var _isPowerOfThree = function(n) {
+    
+    if (n < 4) {
+        return n % 3 === 0
+    }
+    n = n / 3;
+    if (Number(n) === n && n % 1 !== 0) {
+        return false
+    }
+    return _isPowerOfThree(n)
+}
+```
 
 
 
