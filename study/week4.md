@@ -39,7 +39,39 @@ var isIsomorphic = function(s, t) {
 {code}
 
 #### 이소은
-{code}
+```javascript
+var isIsomorphic = function(s, t) {
+    let tmp_str = "";
+    let tmp_str1 = ""
+    const new_map_s = {};
+    const new_map_t = {};
+    let tmp_char_s = -1
+    let tmp_char_t = -1
+    
+    if(s.length === t.length) {
+        for(let i = 0; i < s.length; i++) {
+            if (!(s[i] in new_map_s)) {
+                new_map_s[s[i]] = ++tmp_char_s
+                tmp_str += new_map_s[s[i]]
+            } else {
+                tmp_str+= new_map_s[s[i]]
+            }
+            
+            if (!(t[i] in new_map_t)) {
+                new_map_t[t[i]] = ++tmp_char_t
+                tmp_str1 += new_map_t[t[i]]
+            } else {
+                tmp_str1 += new_map_t[t[i]]
+            }
+        }
+        
+        return tmp_str === tmp_str1
+    }
+    
+    return false;
+    
+};
+```
 
 #### 서경원
 ```java
