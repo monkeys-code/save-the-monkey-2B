@@ -135,7 +135,40 @@ var wordPattern = function(pattern, str) {
 {code}
 
 #### 이소은
-{code}
+```javascript
+var wordPattern = function(pattern, str) {
+    const splited_str = str.split(" ");
+    let tmp_str = "";
+    let tmp_str1 = ""
+    const new_map_s = {};
+    const new_map_t = {};
+    let tmp_char_s = -1
+    let tmp_char_t = -1
+    
+    if(pattern.length === splited_str.length) {
+        for(let i = 0; i < pattern.length; i++) {
+            if (!(pattern[i] in new_map_s)) {
+                new_map_s[pattern[i]] = ++tmp_char_s
+                tmp_str += new_map_s[pattern[i]]
+            } else {
+                tmp_str+= new_map_s[pattern[i]]
+            }
+            
+            if (!(splited_str[i] in new_map_t)) {
+                new_map_t[splited_str[i]] = ++tmp_char_t
+                tmp_str1 += new_map_t[splited_str[i]]
+            } else {
+                tmp_str1 += new_map_t[splited_str[i]]
+            }
+        }
+        
+        return tmp_str === tmp_str1
+    }
+    
+    return false;
+};
+
+```
 
 #### 서경원
 ```java
