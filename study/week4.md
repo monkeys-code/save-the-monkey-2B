@@ -36,7 +36,37 @@ var isIsomorphic = function(s, t) {
 - python에서 set을 사용하면 한줄에 풀 수 있음. python이 포기하기엔 너무 편한 건 사실인 듯...
 
 #### 김지훈
-{code}
+```javascript
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isIsomorphic = function(s, t) {
+    const s_dic = stringToDic(s);
+    const t_dic = stringToDic(t);
+    
+    return stringToPattern(s_dic, s) === stringToPattern(t_dic, t)
+};
+
+function stringToDic(str) { // s [e,g,g]
+    const obj = {};
+    str.split("")
+        .filter((it, idx, self) => self.indexOf(it) == idx)
+        .forEach((it, idx, self) => {
+            obj[it] = idx
+        })
+    
+    return obj;
+} // return {e: 0, g: 1}
+
+
+function stringToPattern(dic, str) {
+    return str.split("")
+        .map(it => dic[it])
+        .join("");
+}
+```
 
 #### 이소은
 ```javascript
@@ -132,7 +162,39 @@ var wordPattern = function(pattern, str) {
 - Hard 난이도인 Word Pattern 2는 결제해야 해서 더 어려운 것을 원한다면...
 
 #### 김지훈
-{code}
+```javascript
+/**
+ * @param {string} pattern
+ * @param {string} str
+ * @return {boolean}
+ */
+var wordPattern = function(pattern, str) {
+    const pattern_separate = "";
+    const str_separate = " ";
+    const pattern_dic = stringToDic(pattern, pattern_separate);
+    const str_dic = stringToDic(str, str_separate);
+    
+    return stringToPattern(pattern_dic, pattern, pattern_separate) === stringToPattern(str_dic, str, str_separate)
+};
+
+function stringToDic(str, separate) { // s [e,g,g]
+    const obj = {};
+    str.split(separate)
+        .filter((it, idx, self) => self.indexOf(it) == idx)
+        .forEach((it, idx, self) => {
+            obj[it] = idx
+        })
+    
+    return obj;
+} // return {e: 0, g: 1}
+
+
+function stringToPattern(dic, str, separate) {
+    return str.split(separate)
+        .map(it => dic[it])
+        .join("");
+}
+```
 
 #### 이소은
 ```javascript
@@ -204,4 +266,5 @@ class Solution {
 - 확실히 알고리즘은 꾸준히 풀어주는게 좋은 것 같습니다. 당장 면접을 보든 안보든 2주에 한번 정도는 이지~미디움 난이도를 푸는 게 좋다고 느끼네요.
 ### 서경원
 ### 김지훈
+- 간만에 재미있는 문제였다!!! ㅋㅋ
 ### 이소은
