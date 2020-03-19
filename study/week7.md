@@ -228,8 +228,64 @@ export default List;
 ```
 
 #### 서경원
-```java
+```javascript
+class List {
+  constructor() {
+    this.head = null;
+  }
 
+  addHead(val) {
+    this.head = new ListNode(val, this.head);
+  }
+
+  addTail(val) {
+    if (this.isEmpty()) {
+      this.head = new ListNode(val);
+    } else {
+      let node = this.head;
+      while (node.next) {
+        node = node.next;
+      }
+      node.next = new ListNode(val);
+    }
+  }
+
+  getNode(index) {
+    let node = this.head;
+    for (let i = 0 ; i < index ; i++) {
+      node = node.next;
+    }
+    return node;
+  }
+
+  getValue(index) {
+    return this.getNode(index).val;
+  }
+
+  isEmpty() {
+    return this.head === null;
+  }
+
+  size() {
+    if (this.isEmpty()) {
+      return 0;
+    }
+    let count = 1;
+    let node = this.head;
+    while (node.next) {
+      count++;
+      node = node.next;
+    }
+    return count;
+  }
+}
+
+class ListNode {
+  constructor(val = Number.MIN_SAFE_INTEGER, next = null) {
+    this.val = val;
+    this.next = next;
+  }
+}
 ```
 
 ## Round 2
@@ -386,14 +442,78 @@ export default List;
 ```
 
 #### 서경원
-```java
+```javascript
+  toString() {
+    let str = '';
+    for (let node = this.head ; node ; node = node.next) {
+      str += ',' + node.val;
+    }
+    return '[' + str.substring(1) + ']';
+  }
+  
+  getMiddle() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    let slower = this.head;
+    let faster = this.head;
+    while (faster && faster.next) {
+      faster = faster.next.next;
+      slower = slower.next;
+    }
+    return slower.val;
+  }
 
+  hasCycle() {
+    if (this.isEmpty()) {
+      return false;
+    }
+    let slower = this.head;
+    let faster = this.head;
+    while (faster && faster.next) {
+      faster = faster.next.next;
+      slower = slower.next;
+      if (faster === slower) {
+        return true;
+      }
+    }
+    return false;
+  }
 ```
 
 ## Round 3
 ### 링크드 리스트 size없이 getMiddle 구현, reverse 구현
 ### 고은정
 ### 서경원
+```javascript
+  reverse() {
+    this.head = this._reverseRecurs(this.head, null);
+  }
+
+  _reverseRecurs(curr, prev) {
+    if (curr.next) {
+      const newHead = this._reverseRecurs(curr.next, curr);
+      curr.next = prev;
+      return newHead;
+    } else {
+      curr.next = prev;
+      return curr;
+    }
+  }
+
+
+  static parse(str) {
+    const list = new List();
+    const values = str.replace(/[\[\]\s]/g, '').split(',');
+    for (let value of values) {
+      if (value) {
+        list.addTail(parseInt(value));
+      }
+    }
+    return list;
+  }
+```
+
 ### 김지훈
 ### 이소은
 ```javascript
